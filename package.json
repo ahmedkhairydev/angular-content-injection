@@ -5,15 +5,18 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "deploy": "ng deploy --base-href https://ahmedkhairydev.github.io/angular-content-injection/ --repo=https://github.com/ahmedkhairydev/angular-content-injection.git --name=Ahmed"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
+    "@angular/cdk": "16.2.1",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
     "@angular/forms": "^16.2.0",
+    "@angular/material": "16.2.1",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
@@ -25,6 +28,7 @@
     "@angular-devkit/build-angular": "^16.2.0",
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "^16.2.0",
+    "angular-cli-ghpages": "1.0.6",
     "typescript": "~5.1.3"
   }
 }

@@ -1,21 +1,55 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DropDownComponent } from './components/drop-down/drop-down.component';
+import { OptionDirective } from './directives/option-directive.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DropDownComponent, OptionDirective],
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
+    <div class="content">
       <h1>
         Welcome to {{title}}!
       </h1>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+      <div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 2rem;">
+        <app-drop-down label="Countries" [options]="options" (selected)="getSelectedValue($event)">
+          <ng-template ng-option let-option>
+            {{ option.text }}
+          </ng-template>
+        </app-drop-down>
+      </div>
     </div>
   `,
-  styles: [],
+  styles: [`
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  `],
 })
 export class AppComponent {
   title = 'angular-content-injection';
+  options = [
+    {
+      id: 1,
+      text: 'Egypt'
+    },
+    {
+      id: 2,
+      text: 'Oman'
+    },
+    {
+      id: 3,
+      text: 'Saudi Arabia'
+    }
+  ];
+
+  getSelectedValue(value: string) {
+    alert(value);
+  }
 }
